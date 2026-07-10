@@ -1,252 +1,381 @@
 <!doctype html>
-<html lang="bs">
+<html lang="bs" class="scroll-smooth">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Načini plaćanja – Jug Media IPTV</title>
+    <title>Načini plaćanja | EH-TV</title>
+    
+    <meta name="description" content="Sigurni i provjereni načini plaćanja za EH-TV. Brza aktivacija, SSL enkripcija, PayPal, Kartice, Crypto i više.">
+    <meta name="keywords" content="EH-TV plaćanje, iptv paypal, iptv kartica, iptv crypto, sigurno plaćanje">
+    <meta name="author" content="EH-TV">
 
-<meta name="description" content="Verified i sigurni načini plaćanja za Jug Media IPTV. Preko 20.000+ korisnika širom Evrope.">
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="Načini plaćanja - EH-TV">
+    <meta property="og:description" content="Odaberite najlakši način plaćanja. Brza i sigurna aktivacija usluge.">
+    <meta property="og:type" content="website">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-:root{
-  --neon:#2ac0ff;
-  --muted:rgba(200,220,255,.25);
-  --glass:rgba(255,255,255,.05);
-  --green:#3dff9e;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family:Inter;
-  background:linear-gradient(180deg,#050714,#02102a);
-  color:#e6f7ff;
-  overflow-x:hidden;
-}
-body.nav-open{overflow:hidden}
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#050b14',
+                            card: '#0a1222',
+                            neon: '#00d2ff',
+                            accent: '#3a7bd5',
+                            safe: '#10b981'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
 
-a{text-decoration:none;color:inherit}
-.wrap{max-width:1100px;margin:auto;padding:0 18px}
+    <style>
+        body {
+            background-color: #050b14;
+            background-image: 
+                radial-gradient(at 50% 0%, rgba(16, 185, 129, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 210, 255, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: #f8fafc;
+        }
 
-/* HEADER */
-header{
-  text-align:center;
-  padding:40px 0 20px;
-  position:relative;
-}
-h1{
-  font-family:'Bebas Neue';
-  font-size:48px;
-  margin:0;
-}
-header p{color:var(--muted)}
+        .glass-panel {
+            background: rgba(10, 18, 34, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-nav {
+            background: rgba(5, 11, 20, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-.menu-btn{
-  position:absolute;
-  top:20px;
-  left:20px;
-  font-size:34px;
-  cursor:pointer;
-}
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050b14; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3a7bd5; }
 
-/* OVERLAY NAV – FIXED */
-.overlay{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100vw;
-  height:100vh;
-  background:rgba(2,10,30,.98);
-  z-index:2000;
-  display:none;
-  padding-top:80px;
-  text-align:center;
-}
-.overlay.open{display:block}
-.overlay a{
-  display:block;
-  padding:14px;
-  font-size:26px;
-}
-.overlay a:hover{color:var(--neon)}
-.closebtn{
-  position:absolute;
-  top:20px;
-  right:30px;
-  font-size:46px;
-  cursor:pointer;
-}
-
-/* VERIFIED */
-.verified{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  margin:20px auto;
-  padding:10px 18px;
-  border-radius:30px;
-  background:rgba(61,255,158,.08);
-  border:1px solid rgba(61,255,158,.25);
-  color:var(--green);
-  font-size:14px;
-  font-weight:600;
-}
-
-/* TRUST BAR */
-.trust-bar{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:18px;
-  font-size:14px;
-  color:var(--muted);
-  margin:25px 0;
-}
-
-/* PANELS */
-.panel{
-  background:var(--glass);
-  border-radius:18px;
-  padding:28px;
-  margin:30px 0;
-  border:1px solid rgba(255,255,255,.05);
-}
-
-.pay-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:18px;
-}
-
-.pay-box{
-  background:rgba(255,255,255,.04);
-  border-radius:16px;
-  padding:26px;
-  text-align:center;
-  border:1px solid rgba(255,255,255,.05);
-  cursor:pointer;
-  transition:.25s;
-}
-.pay-box:hover{
-  transform:translateY(-4px);
-  box-shadow:0 0 30px rgba(42,176,255,.25);
-}
-.pay-box strong{
-  display:block;
-  margin-top:10px;
-  font-size:18px;
-  color:var(--neon);
-}
-.pay-box::after{
-  content:"✔ Sigurna & verifikovana uplata";
-  display:block;
-  font-size:11px;
-  color:var(--green);
-  margin-top:10px;
-}
-
-/* FOOTER */
-.footer-note{
-  text-align:center;
-  color:var(--muted);
-  font-size:13px;
-}
-
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  padding:14px 18px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#25d366,#128c7e);
-  color:#fff;
-  font-weight:800;
-  z-index:1000;
-}
-</style>
+        #mobile-menu {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
 </head>
+<body class="antialiased min-h-screen flex flex-col relative overflow-x-hidden">
 
-<body>
+    <!-- Navigation -->
+    <header class="fixed w-full top-0 z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center cursor-pointer">
+                    <!-- OVDJE JE TVOJ LOGO -->
+                    <img src="ehlogo.PNG" alt="EH-TV Logo" class="h-10 md:h-12 w-auto object-contain drop-shadow-[0_0_8px_rgba(0,210,255,0.3)]">
+                </a>
 
-<!-- NAV -->
-<nav id="nav" class="overlay">
-  <div class="closebtn" onclick="closeNav()">×</div>
-  <a href="index.html" onclick="closeNav()">Početna</a>
-  <a href="onama.html" onclick="closeNav()">O nama</a>
-  <a href="cjenovnik.html" onclick="closeNav()">Cjenovnik</a>
-  <a href="placanje.html" onclick="closeNav()">Načini plaćanja</a>
-  <a href="proba.html" onclick="closeNav()">Besplatna proba</a>
-  <a href="faq.html" onclick="closeNav()">FAQ</a>
-  <a href="kontakt.html" onclick="closeNav()">Kontakt</a>
-  <a href="reseller.html" onclick="closeNav()">Reseller</a>
-</nav>
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-1 border border-white/10 rounded-full px-2 py-1.5 bg-white/5">
+                    <a href="index.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-white/5 font-medium text-sm transition">Početna</a>
+                    <a href="onama.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-white/5 font-medium text-sm transition">O nama</a>
+                    <a href="cjenovnik.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-white/5 font-medium text-sm transition">Cjenovnik</a>
+                    <a href="proba.html" class="px-4 py-2 rounded-full text-brand-neon hover:text-white hover:bg-white/5 font-medium text-sm transition">Besplatna proba</a>
+                </nav>
 
-<div class="wrap">
+                <!-- Action Button & Mobile Toggle -->
+                <div class="flex items-center gap-4">
+                    <a href="kontakt.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white transition-all bg-white/10 border border-white/20 rounded-full hover:bg-white/20">
+                        Kontakt
+                    </a>
+                    <button id="menu-btn" class="md:hidden text-gray-300 hover:text-white p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-<header>
-  <span class="menu-btn" onclick="openNav()">☰</span>
-  <h1>Načini plaćanja</h1>
-  <p>Sigurna uplata – brza aktivacija</p>
-  <div class="verified">✔ VERIFIED & TRUSTED SERVICE</div>
-</header>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-[#050b14]/95 backdrop-blur-xl z-40 flex flex-col pt-24 px-6 opacity-0 pointer-events-none translate-y-4">
+            <button id="close-btn" class="absolute top-6 right-6 text-gray-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-3xl"></i>
+            </button>
+            <nav class="flex flex-col space-y-4 text-center text-xl font-medium">
+                <a href="index.html" class="text-gray-300 hover:text-white py-3 border-b border-white/5">Početna</a>
+                <a href="onama.html" class="text-gray-300 hover:text-white py-3 border-b border-white/5">O nama</a>
+                <a href="cjenovnik.html" class="text-gray-300 hover:text-white py-3 border-b border-white/5">Cjenovnik</a>
+                <a href="placanje.html" class="text-brand-safe py-3 border-b border-white/5">Načini plaćanja</a>
+                <a href="proba.html" class="text-gray-300 hover:text-white py-3 border-b border-white/5">Besplatna proba</a>
+                <a href="faq.html" class="text-gray-300 hover:text-white py-3 border-b border-white/5">FAQ</a>
+                <a href="kontakt.html" class="text-gray-300 hover:text-white py-3 border-b border-white/5">Kontakt</a>
+                <a href="reseller.html" class="text-gray-300 hover:text-white py-3">Reseller</a>
+            </nav>
+        </div>
+    </header>
 
-<div class="trust-bar">
-  <span>🔒 SSL Enkripcija</span>
-  <span>🛡️ Ne pohranjujemo kartične podatke</span>
-  <span>👤 Ručna obrada uplata</span>
-  <span>📞 24/7 podrška</span>
-</div>
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full flex flex-col gap-8">
+        
+        <!-- Header Section -->
+        <section class="text-center py-6">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-safe/10 border border-brand-safe/30 text-brand-safe text-sm font-bold mb-6">
+                <i class="fa-solid fa-shield-check"></i> VERIFIED & TRUSTED SERVICE
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+                Načini plaćanja
+            </h1>
+            <p class="text-lg text-gray-400">Sigurna uplata – brza aktivacija</p>
+        </section>
 
-<div class="panel" style="text-align:center">
-  ⭐ Više od <strong>20.000+</strong> korisnika potvrdilo sigurnost naših plaćanja
-</div>
+        <!-- Trust Bar -->
+        <section class="flex flex-wrap justify-center gap-4 sm:gap-8 py-4">
+            <div class="flex items-center gap-2 text-gray-300 text-sm font-medium">
+                <i class="fa-solid fa-lock text-brand-safe"></i> SSL Enkripcija
+            </div>
+            <div class="flex items-center gap-2 text-gray-300 text-sm font-medium">
+                <i class="fa-regular fa-credit-card text-brand-neon"></i> Ne čuvamo podatke
+            </div>
+            <div class="flex items-center gap-2 text-gray-300 text-sm font-medium">
+                <i class="fa-solid fa-user-shield text-brand-accent"></i> Ručna obrada
+            </div>
+            <div class="flex items-center gap-2 text-gray-300 text-sm font-medium">
+                <i class="fa-solid fa-headset text-yellow-400"></i> 24/7 podrška
+            </div>
+        </section>
 
-<div class="panel" style="font-size:14px;color:var(--muted)">
-  ℹ️ Aktivacija: <strong>5–30 minuta</strong> (max 12h).  
-  💰 U slučaju problema nudimo zamjenu ili povrat sredstava.  
-  ⚠️ Nikada ne tražimo lozinke ili kodove.
-</div>
+        <!-- Social Proof Banner -->
+        <div class="bg-gradient-to-r from-brand-accent/20 to-brand-safe/20 border border-brand-safe/30 rounded-2xl p-4 text-center shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+            <p class="text-white text-sm md:text-base font-medium">
+                <i class="fa-solid fa-star text-yellow-400 mr-2"></i> 
+                Više od <strong class="text-brand-safe font-extrabold">20.000+</strong> korisnika je potvrdilo sigurnost naših plaćanja.
+            </p>
+        </div>
 
-<div class="panel">
-  <div class="pay-grid">
-    <div class="pay-box" onclick="pay('Visa / MasterCard')">💳<strong>Visa / MasterCard</strong></div>
-    <div class="pay-box" onclick="pay('PayPal')">🅿️<strong>PayPal</strong></div>
-    <div class="pay-box" onclick="pay('Skrill')">💼<strong>Skrill</strong></div>
-    <div class="pay-box" onclick="pay('IBAN')">🏦<strong>IBAN</strong></div>
-    <div class="pay-box" onclick="pay('Crypto')">₿<strong>Crypto</strong></div>
-    <div class="pay-box" onclick="pay('Western Union')">🌍<strong>Western Union</strong></div>
-    <div class="pay-box" onclick="pay('Ria Money')">💸<strong>Ria Money</strong></div>
-    <div class="pay-box" onclick="pay('Poslovnica Sarajevo')">🏢<strong>Poslovnica</strong></div>
-  </div>
-</div>
+        <!-- Info Panel -->
+        <div class="glass-panel rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row gap-6 items-center justify-between border-l-4 border-l-brand-neon">
+            <div class="flex-1 space-y-3">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-bolt text-brand-neon mt-1"></i>
+                    <p class="text-gray-300 text-sm"><strong class="text-white">Aktivacija:</strong> 5–30 minuta (max 12h zbog ručne obrade).</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-handshake-angle text-brand-accent mt-1"></i>
+                    <p class="text-gray-300 text-sm"><strong class="text-white">Garancija:</strong> U slučaju problema nudimo zamjenu ili povrat sredstava.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-triangle-exclamation text-yellow-500 mt-1"></i>
+                    <p class="text-gray-300 text-sm"><strong class="text-white">Sigurnost:</strong> Naši agenti nikada neće tražiti vaše lozinke ili PIN kodove.</p>
+                </div>
+            </div>
+            <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-info-circle text-2xl text-gray-400"></i>
+            </div>
+        </div>
 
-<div class="panel footer-note">
-  Posljednje ažuriranje sistema plaćanja: <strong>2025</strong>
-</div>
+        <!-- Payment Methods Grid -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6 text-center">Odaberite način plaćanja</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Card -->
+                <div onclick="pay('Visa / MasterCard')" class="glass-panel rounded-2xl p-6 text-center cursor-pointer group hover:-translate-y-2 hover:border-brand-neon/50 hover:shadow-[0_10px_30px_rgba(0,210,255,0.15)] transition-all duration-300">
+                    <div class="h-12 flex items-center justify-center gap-2 mb-4">
+                        <i class="fa-brands fa-cc-visa text-4xl text-blue-500"></i>
+                        <i class="fa-brands fa-cc-mastercard text-4xl text-red-500"></i>
+                    </div>
+                    <strong class="block text-lg text-white mb-2 group-hover:text-brand-neon transition-colors">Visa / MasterCard</strong>
+                    <div class="text-xs text-brand-safe font-semibold flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-check"></i> Verifikovano
+                    </div>
+                </div>
 
-</div>
+                <!-- PayPal -->
+                <div onclick="pay('PayPal')" class="glass-panel rounded-2xl p-6 text-center cursor-pointer group hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-[0_10px_30px_rgba(59,130,246,0.15)] transition-all duration-300">
+                    <div class="h-12 flex items-center justify-center mb-4">
+                        <i class="fa-brands fa-paypal text-4xl text-blue-400"></i>
+                    </div>
+                    <strong class="block text-lg text-white mb-2 group-hover:text-blue-400 transition-colors">PayPal</strong>
+                    <div class="text-xs text-brand-safe font-semibold flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-check"></i> Najbrže
+                    </div>
+                </div>
 
-<a href="https://wa.me/38761366591" class="whatsapp">💬 WhatsApp</a>
+                <!-- Skrill -->
+                <div onclick="pay('Skrill')" class="glass-panel rounded-2xl p-6 text-center cursor-pointer group hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_10px_30px_rgba(168,85,247,0.15)] transition-all duration-300">
+                    <div class="h-12 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-wallet text-4xl text-purple-500"></i>
+                    </div>
+                    <strong class="block text-lg text-white mb-2 group-hover:text-purple-400 transition-colors">Skrill</strong>
+                    <div class="text-xs text-brand-safe font-semibold flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-check"></i> Verifikovano
+                    </div>
+                </div>
 
-<script>
-function openNav(){
-  document.getElementById("nav").classList.add("open");
-  document.body.classList.add("nav-open");
-}
-function closeNav(){
-  document.getElementById("nav").classList.remove("open");
-  document.body.classList.remove("nav-open");
-}
-function pay(method){
-  const text=`Zdravo, želio bih vaše usluge platiti putem ${method}. Molim podatke. Hvala!`;
-  window.open("https://wa.me/38761366591?text="+encodeURIComponent(text),"_blank");
-}
-</script>
+                <!-- IBAN -->
+                <div onclick="pay('IBAN račun')" class="glass-panel rounded-2xl p-6 text-center cursor-pointer group hover:-translate-y-2 hover:border-yellow-500/50 hover:shadow-[0_10px_30px_rgba(234,179,8,0.15)] transition-all duration-300">
+                    <div class="h-12 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-building-columns text-4xl text-yellow-500"></i>
+                    </div>
+                    <strong class="block text-lg text-white mb-2 group-hover:text-yellow-400 transition-colors">IBAN / Banka</strong>
+                    <div class="text-xs text-brand-safe font-semibold flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-check"></i> SEPA / SWIFT
+                    </div>
+                </div>
 
+                <!-- Crypto -->
+                <div onclick="pay('Kriptovalute (Crypto)')" class="glass-panel rounded-2xl p-6 text-center cursor-pointer group hover:-translate-y-2 hover:border-orange-500/50 hover:shadow-[0_10px_30px_rgba(249,115,22,0.15)] transition-all duration-300">
+                    <div class="h-12 flex items-center justify-center mb-4 gap-2">
+                        <i class="fa-brands fa-bitcoin text-4xl text-orange-500"></i>
+                        <i class="fa-brands fa-ethereum text-4xl text-gray-300"></i>
+                    </div>
+                    <strong class="block text-lg text-white mb-2 group-hover:text-orange-400 transition-colors">Crypto</strong>
+                    <div class="text-xs text-brand-safe font-semibold flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-check"></i> Anonimno
+                    </div>
+                </div>
+
+                <!-- Western Union -->
+                <div onclick="pay('Western Union')" class="glass-panel rounded-2xl p-6 text-center cursor-pointer group hover:-translate-y-2 hover:border-yellow-400/50 hover:shadow-[0_10px_30px_rgba(250,204,21,0.15)] transition-all duration-300">
+                    <div class="h-12 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-money-bill-transfer text-4xl text-yellow-400"></i>
+                    </div>
+                    <strong class="block text-lg text-white mb-2 group-hover:text-yellow-300 transition-colors">Western Union</strong>
+                    <div class="text-xs text-brand-safe font-semibold flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-check"></i> Verifikovano
+                    </div>
+                </div>
+
+                <!-- Ria Money -->
+                <div onclick="pay('Ria Money')" class="glass-panel rounded-2xl p-6 text-center cursor-pointer group hover:-translate-y-2 hover:border-orange-600/50 hover:shadow-[0_10px_30px_rgba(234,88,12,0.15)] transition-all duration-300">
+                    <div class="h-12 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-money-bill-wave text-4xl text-orange-500"></i>
+                    </div>
+                    <strong class="block text-lg text-white mb-2 group-hover:text-orange-500 transition-colors">Ria Money</strong>
+                    <div class="text-xs text-brand-safe font-semibold flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-check"></i> Verifikovano
+                    </div>
+                </div>
+
+                <!-- Poslovnica -->
+                <div onclick="pay('Lično u Poslovnici')" class="glass-panel rounded-2xl p-6 text-center cursor-pointer group hover:-translate-y-2 hover:border-gray-400/50 hover:shadow-[0_10px_30px_rgba(156,163,175,0.15)] transition-all duration-300">
+                    <div class="h-12 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-store text-4xl text-gray-300"></i>
+                    </div>
+                    <strong class="block text-lg text-white mb-2 group-hover:text-gray-300 transition-colors">Poslovnica</strong>
+                    <div class="text-xs text-brand-safe font-semibold flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-check"></i> Lično preuzimanje
+                    </div>
+                </div>
+
+            </div>
+            
+            <p class="text-center text-gray-500 text-xs mt-8">
+                * Klikom na bilo koju metodu automatski ćete biti preusmjereni na WhatsApp za dobijanje instrukcija za uplatu.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-nav border-t border-white/5 pt-12 pb-6 px-4 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            
+            <div class="flex flex-col items-center md:items-start">
+                <div class="flex items-center mb-3">
+                    <!-- OVDJE JE TVOJ LOGO U FOOTERU -->
+                    <img src="ehlogo.PNG" alt="EH-TV Logo" class="h-10 w-auto object-contain">
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center md:items-end gap-2">
+                <!-- OVDJE JE TVOJ EMAIL -->
+                <a href="mailto:eh-tvpodrska@gmail.com" class="text-gray-400 hover:text-brand-neon transition-colors flex items-center gap-2 text-sm">
+                    <i class="fa-regular fa-envelope"></i> eh-tvpodrska@gmail.com
+                </a>
+                <div class="mt-2 text-gray-500 text-xs text-center md:text-right">
+                    Posljednje ažuriranje sistema plaćanja: <span id="year"></span> <br>
+                    &copy; EH-TV. Sva prava zadržana.
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/38761392486" target="_blank" class="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25D366] text-white px-5 py-3 rounded-full font-bold shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:shadow-[0_4px_25px_rgba(37,211,102,0.6)] hover:-translate-y-1 transition-all group">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <span class="hidden sm:inline-block max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 ease-in-out whitespace-nowrap">
+            Kontaktirajte nas
+        </span>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Set year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            const isOpen = !mobileMenu.classList.contains('opacity-0');
+            if (isOpen) {
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                document.body.style.overflow = 'auto';
+            } else {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+
+        // Payment Link Generator (Novi broj ubačen)
+        function pay(method){
+            const text = `Zdravo! Želim da uplatim pretplatu za EH-TV putem metode: ${method}. Možete li mi poslati podatke za uplatu?`;
+            const broj = "38761392486";
+            window.open(`https://wa.me/${broj}?text=` + encodeURIComponent(text), "_blank");
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
 </body>
 </html>
+
+
