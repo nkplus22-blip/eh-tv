@@ -1,259 +1,333 @@
 <!doctype html>
-<html lang="bs">
+<html lang="bs" class="scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Besplatna IPTV proba – Jug Media</title>
+    <title>Besplatna IPTV proba | EH-TV</title>
+    
+    <meta name="description" content="Zatražite besplatnu IPTV probu kod EH-TV. Testirajte kvalitet, brzinu i ponudu bez ikakve obaveze.">
+    <meta name="keywords" content="IPTV proba, besplatna IPTV, EH-TV proba, iptv test">
+    <meta name="author" content="EH-TV">
 
-  <!-- SEO -->
-  <meta name="description" content="Zatražite besplatnu IPTV probu kod Jug Media. Testirajte kvalitet, brzinu i ponudu bez ikakve obaveze.">
-  <meta name="keywords" content="IPTV proba, besplatna IPTV, Jug Media IPTV">
-  <meta name="author" content="Jug Media">
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="Besplatna proba - EH-TV">
+    <meta property="og:description" content="Testirajte EH-TV potpuno besplatno bez ikakve obaveze.">
+    <meta property="og:type" content="website">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <style>
-    :root{
-      --neon:#2ac0ff;
-      --accent:#4a6bff;
-      --muted:rgba(200,220,255,.25);
-      --glass:rgba(255,255,255,.05);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,Arial,sans-serif;
-      background:linear-gradient(180deg,#050714,#02102a);
-      color:#e6f7ff;
-    }
-    a{text-decoration:none;color:inherit}
-    .wrap{max-width:1000px;margin:auto;padding:0 18px}
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#050b14',
+                            card: '#0a1222',
+                            neon: '#00d2ff',
+                            accent: '#3a7bd5'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
 
-    header{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      padding:24px 12px;
-      position:relative;
-    }
-    .site-logo{max-width:200px}
-    .menu-toggle{
-      position:absolute;
-      top:18px;
-      right:18px;
-      background:none;
-      border:none;
-      color:var(--neon);
-      font-size:32px;
-      cursor:pointer;
-    }
+    <style>
+        body {
+            background-color: #050b14;
+            background-image: 
+                radial-gradient(at 0% 100%, rgba(58, 123, 213, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 210, 255, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: #f8fafc;
+        }
 
-    /* NAV */
-    .overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(0,6,20,.96);
-      backdrop-filter:blur(8px);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      transform:scale(0);
-      transition:.4s;
-      z-index:999;
-    }
-    .overlay.open{transform:scale(1)}
-    .overlay a{font-size:22px;padding:12px 20px}
-    .closebtn{
-      position:absolute;
-      top:18px;
-      right:22px;
-      font-size:36px;
-      color:var(--neon);
-      cursor:pointer;
-    }
+        .glass-panel {
+            background: rgba(10, 18, 34, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-nav {
+            background: rgba(5, 11, 20, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-    .hero{
-      text-align:center;
-      padding:40px 0 20px;
-    }
-    .hero h1{
-      font-family:'Bebas Neue';
-      font-size:52px;
-      margin:0;
-    }
-    .hero p{
-      max-width:760px;
-      margin:14px auto;
-      color:var(--muted);
-      line-height:1.7;
-    }
-    .cta{
-      display:inline-block;
-      margin-top:22px;
-      padding:16px 32px;
-      border-radius:16px;
-      background:linear-gradient(135deg,var(--neon),var(--accent));
-      color:#001;
-      font-weight:900;
-      font-size:16px;
-    }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050b14; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3a7bd5; }
 
-    .panel{
-      background:var(--glass);
-      border-radius:18px;
-      padding:28px;
-      margin:30px 0;
-      border:1px solid rgba(255,255,255,.05);
-    }
-    .panel p{line-height:1.8}
-
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:16px;
-      margin-top:20px;
-    }
-    .step{
-      background:rgba(255,255,255,.04);
-      border-radius:14px;
-      padding:20px;
-      text-align:center;
-      border:1px solid rgba(255,255,255,.05);
-    }
-    .step strong{
-      display:block;
-      font-size:22px;
-      color:var(--neon);
-      margin-bottom:6px;
-    }
-    .step span{
-      font-size:14px;
-      color:var(--muted);
-    }
-
-    .trust{
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.7;
-      margin-top:10px;
-    }
-
-    footer{
-      margin-top:40px;
-      padding:30px 12px;
-      text-align:center;
-      border-top:1px solid rgba(255,255,255,.05);
-      background:rgba(0,0,0,.6);
-    }
-    footer small{
-      display:block;
-      margin-top:8px;
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    .whatsapp{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      padding:14px 18px;
-      border-radius:14px;
-      background:linear-gradient(135deg,#25d366,#128c7e);
-      color:#fff;
-      font-weight:800;
-      z-index:999;
-    }
-  </style>
+        #mobile-menu {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
 </head>
+<body class="antialiased min-h-screen flex flex-col relative overflow-x-hidden">
 
-<body>
+    <!-- Navigation -->
+    <header class="fixed w-full top-0 z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center cursor-pointer">
+                    <img src="ehlogo.PNG" alt="EH-TV Logo" class="h-10 md:h-12 w-auto object-contain drop-shadow-[0_0_8px_rgba(0,210,255,0.3)]">
+                </a>
 
-<div class="wrap">
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-1 border border-white/10 rounded-full px-2 py-1.5 bg-white/5">
+                    <a href="index.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-white/5 font-medium text-sm transition">Početna</a>
+                    <a href="onama.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-white/5 font-medium text-sm transition">O nama</a>
+                    <a href="cjenovnik.html" class="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-white/5 font-medium text-sm transition">Cjenovnik</a>
+                    <!-- Aktivni link -->
+                    <a href="proba.html" class="px-4 py-2 rounded-full bg-white/10 text-white font-medium text-sm transition">Besplatna proba</a>
+                </nav>
 
-<header>
-  <img src="jugmedialogo.PNG" alt="Jug Media IPTV" class="site-logo" loading="lazy">
-  <button class="menu-toggle" onclick="openNav()">☰</button>
-</header>
+                <!-- Action Button & Mobile Toggle -->
+                <div class="flex items-center gap-4">
+                    <a href="kontakt.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white transition-all bg-white/10 border border-white/20 rounded-full hover:bg-white/20">
+                        Kontakt
+                    </a>
+                    <button id="menu-btn" class="md:hidden text-gray-300 hover:text-white p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-<!-- FINAL HAMBURGER -->
-<nav id="nav" class="overlay">
-  <div class="closebtn" onclick="closeNav()">×</div>
-  <a href="index.html">Početna</a>
-  <a href="onama.html">O nama</a>
-  <a href="cjenovnik.html">Cjenovnik</a>
-  <a href="placanje.html">Načini plaćanja</a>
-  <a href="proba.html">Besplatna proba</a>
-  <a href="faq.html">FAQ</a>
-  <a href="kontakt.html">Kontakt</a>
-  <a href="reseller.html">Reseller</a>
-</nav>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-[#050b14]/95 backdrop-blur-xl z-40 flex flex-col pt-24 px-6 opacity-0 pointer-events-none translate-y-4">
+            <button id="close-btn" class="absolute top-6 right-6 text-gray-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-3xl"></i>
+            </button>
+            <nav class="flex flex-col space-y-4 text-center text-xl font-medium">
+                <a href="index.html" class="text-gray-300 hover:text-white py-3 border-b border-white/5">Početna</a>
+                <a href="onama.html" class="text-gray-300 hover:text-white py-3 border-b border-white/5">O nama</a>
+                <a href="cjenovnik.html" class="text-gray-300 hover:text-white py-3 border-b border-white/5">Cjenovnik</a>
+                <a href="placanje.html" class="text-gray-300 hover:text-white py-3 border-b border-white/5">Načini plaćanja</a>
+                <a href="proba.html" class="text-brand-neon py-3 border-b border-white/5">Besplatna proba</a>
+                <a href="faq.html" class="text-gray-300 hover:text-white py-3 border-b border-white/5">FAQ</a>
+                <a href="kontakt.html" class="text-gray-300 hover:text-white py-3 border-b border-white/5">Kontakt</a>
+                <a href="reseller.html" class="text-gray-300 hover:text-white py-3">Reseller</a>
+            </nav>
+        </div>
+    </header>
 
-<section class="hero">
-  <h1>Besplatna IPTV proba</h1>
-  <p>
-    Testirajte Jug Media IPTV <strong>bez ikakve obaveze</strong>.  
-    Kvalitet, stabilnost i podrška – sve na jednom mjestu.
-  </p>
-  <a href="https://wa.me/38761366591?text=Zdravo,%20zelim%20besplatnu%20IPTV%20probu." class="cta" target="_blank">
-    Zatraži besplatnu probu
-  </a>
-</section>
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full flex flex-col gap-10">
+        
+        <!-- Hero Section -->
+        <section class="text-center py-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-neon/10 border border-brand-neon/30 text-brand-neon mb-6">
+                <i class="fa-solid fa-gift text-2xl animate-bounce-slow"></i>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+                Besplatna IPTV Proba
+            </h1>
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed mb-8">
+                Testirajte <span class="text-brand-neon font-semibold">EH-TV</span> potpuno <strong>bez ikakve obaveze</strong>. Kvalitet, stabilnost i podrška – sve na jednom mjestu.
+            </p>
+            
+            <!-- Link s novim brojem -->
+            <a href="https://wa.me/38761392486?text=Zdravo,%20zelim%20besplatnu%20IPTV%20probu." target="_blank" class="inline-flex items-center px-8 py-4 rounded-xl bg-gradient-to-r from-brand-accent to-brand-neon text-white font-bold text-lg shadow-[0_0_20px_rgba(0,210,255,0.3)] hover:shadow-[0_0_30px_rgba(0,210,255,0.5)] hover:-translate-y-1 transition-all">
+                <i class="fa-brands fa-whatsapp text-2xl mr-2"></i> Zatraži besplatnu probu
+            </a>
+        </section>
 
-<div class="panel">
-  <h2>Šta dobijate u probi?</h2>
-  <p>
-    ✔ Pristup velikom broju kanala  
-    <br>✔ Test stabilnosti i kvaliteta (HD / 4K)  
-    <br>✔ Provjeru kompatibilnosti uređaja  
-    <br>✔ Podršku našeg tima tokom probe
-  </p>
-</div>
+        <!-- Šta dobijate -->
+        <div class="glass-panel rounded-3xl p-8 md:p-10 relative overflow-hidden">
+            <div class="absolute right-0 top-0 w-64 h-64 bg-brand-accent/5 rounded-full blur-[80px]"></div>
+            
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Šta dobijate u probi?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+                <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
+                    <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 text-blue-400">
+                        <i class="fa-solid fa-tv"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white mb-1">Puni pristup</h3>
+                        <p class="text-sm text-gray-400">Pristup svim kanalima i ogromnoj VOD videoteci.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
+                    <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 text-green-400">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white mb-1">Test stabilnosti</h3>
+                        <p class="text-sm text-gray-400">Uvjerite se u brzinu i vrhunski HD / 4K kvalitet bez trzanja.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
+                    <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 text-purple-400">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white mb-1">Provjera uređaja</h3>
+                        <p class="text-sm text-gray-400">Testirajte kompatibilnost sa vašim TV-om, telefonom ili box-om.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
+                    <div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center flex-shrink-0 text-yellow-400">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white mb-1">Tehnička podrška</h3>
+                        <p class="text-sm text-gray-400">Pomoć pri podešavanju od našeg stručnog tima.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="panel">
-  <h2>Kako funkcioniše?</h2>
-  <div class="steps">
-    <div class="step"><strong>1</strong><span>Kontaktirate nas</span></div>
-    <div class="step"><strong>2</strong><span>Dobijate pristup</span></div>
-    <div class="step"><strong>3</strong><span>Testirate IPTV</span></div>
-    <div class="step"><strong>4</strong><span>BIRATE PAKET</span></div>
-  </div>
-</div>
+        <!-- Kako funkcioniše -->
+        <div class="glass-panel rounded-3xl p-8 md:p-10">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">Kako funkcioniše?</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+                
+                <div class="bg-black/30 rounded-2xl p-6 text-center border border-white/5 relative group">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-neon/20 flex items-center justify-center text-brand-neon font-black text-xl mb-4 group-hover:scale-110 transition-transform">1</div>
+                    <strong class="block text-white mb-2">Kontakt</strong>
+                    <span class="text-sm text-gray-400">Javite nam se na WhatsApp</span>
+                </div>
+                
+                <div class="bg-black/30 rounded-2xl p-6 text-center border border-white/5 relative group">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-neon/20 flex items-center justify-center text-brand-neon font-black text-xl mb-4 group-hover:scale-110 transition-transform">2</div>
+                    <strong class="block text-white mb-2">Pristup</strong>
+                    <span class="text-sm text-gray-400">Dobijate link ili kod</span>
+                </div>
+                
+                <div class="bg-black/30 rounded-2xl p-6 text-center border border-white/5 relative group">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-neon/20 flex items-center justify-center text-brand-neon font-black text-xl mb-4 group-hover:scale-110 transition-transform">3</div>
+                    <strong class="block text-white mb-2">Testiranje</strong>
+                    <span class="text-sm text-gray-400">Uživate u kanalima</span>
+                </div>
+                
+                <div class="bg-brand-accent/20 rounded-2xl p-6 text-center border border-brand-accent/50 relative group">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-accent text-white flex items-center justify-center font-black text-xl mb-4 group-hover:scale-110 transition-transform">4</div>
+                    <strong class="block text-brand-neon mb-2">Odluka</strong>
+                    <span class="text-sm text-gray-300">Birate svoj paket</span>
+                </div>
+                
+            </div>
+        </div>
 
-<div class="panel">
-  <h2>Zašto nudimo probu?</h2>
-  <p>
-    Jer vjerujemo u kvalitet naše usluge.  
-    Preko <strong>20.000 korisnika</strong> i više od <strong>12 godina iskustva</strong>
-    govore umjesto nas.
-  </p>
-</div>
+        <!-- Zašto proba -->
+        <div class="text-center py-6 px-4">
+            <h2 class="text-2xl font-bold mb-4">Zašto nudimo probu?</h2>
+            <p class="text-gray-400 max-w-lg mx-auto mb-6">
+                Zato što smo 100% sigurni u kvalitet naše usluge. Preko <strong class="text-white">20.000 korisnika</strong> i više od <strong class="text-white">12 godina iskustva</strong> govore umjesto nas.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-6 pt-4 border-t border-white/10">
+                <div class="flex items-center gap-2 text-gray-300 text-sm font-medium">
+                    <i class="fa-solid fa-check text-brand-safe"></i> 12+ godina iskustva
+                </div>
+                <div class="flex items-center gap-2 text-gray-300 text-sm font-medium">
+                    <i class="fa-solid fa-check text-brand-safe"></i> 20.000+ korisnika
+                </div>
+                <div class="flex items-center gap-2 text-gray-300 text-sm font-medium">
+                    <i class="fa-solid fa-check text-brand-safe"></i> 100% garancija
+                </div>
+            </div>
+        </div>
 
-<div class="trust">
-  ✔ 12+ godina iskustva  
-  <br>✔ 20.000+ aktivnih korisnika  
-  <br>✔ 100% garancija zadovoljstva
-</div>
+    </main>
 
-<footer>
-  <strong>Jug Media IPTV</strong>
-  <small>© 2025 Sva prava zadržana</small>
-  <small>Jug Media ne hostuje niti emituje sadržaj – djelujemo kao tehnička platforma.</small>
-</footer>
+    <!-- Footer -->
+    <footer class="glass-nav border-t border-white/5 pt-12 pb-6 px-4 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            
+            <div class="flex flex-col items-center md:items-start">
+                <div class="flex items-center mb-3">
+                    <img src="ehlogo.PNG" alt="EH-TV Logo" class="h-10 w-auto object-contain drop-shadow-[0_0_8px_rgba(0,210,255,0.3)]">
+                </div>
+            </div>
 
-</div>
+            <div class="flex flex-col items-center md:items-end gap-2">
+                <a href="mailto:eh-tvpodrska@gmail.com" class="text-gray-400 hover:text-brand-neon transition-colors flex items-center gap-2 text-sm">
+                    <i class="fa-regular fa-envelope"></i> eh-tvpodrska@gmail.com
+                </a>
+                <p class="text-gray-600 text-xs text-center md:text-right max-w-md mt-2">
+                    EH-TV ne hostuje niti emituje video sadržaj na svojim serverima. Djelujemo kao tehnička platforma.<br>
+                    &copy; <span id="year"></span> EH-TV. Sva prava zadržana.
+                </p>
+            </div>
+            
+        </div>
+    </footer>
 
-<a href="https://wa.me/38761366591" class="whatsapp">💬 WhatsApp</a>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/38761392486" target="_blank" class="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25D366] text-white px-5 py-3 rounded-full font-bold shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:shadow-[0_4px_25px_rgba(37,211,102,0.6)] hover:-translate-y-1 transition-all group">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <span class="hidden sm:inline-block max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 ease-in-out whitespace-nowrap">
+            Kontaktirajte nas
+        </span>
+    </a>
 
-<script>
-function openNav(){document.getElementById("nav").classList.add("open")}
-function closeNav(){document.getElementById("nav").classList.remove("open")}
-</script>
+    <!-- Scripts -->
+    <script>
+        // Set year
+        document.getElementById('year').textContent = new Date().getFullYear();
 
+        // Mobile Menu
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            const isOpen = !mobileMenu.classList.contains('opacity-0');
+            if (isOpen) {
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                document.body.style.overflow = 'auto';
+            } else {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
 </body>
 </html>
+
+
